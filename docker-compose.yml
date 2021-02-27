@@ -1,0 +1,102 @@
+version: '3'
+
+services:
+
+  redis:
+    container_name: redis
+    restart: always
+    image: "redis:alpine"
+    command: >
+      --requirepass Skjmasn672S
+#    healthcheck:
+#      test: redis-cli PING
+#      interval: 10s
+#      timeout: 10s
+#      retries: 3
+#    volumes:
+#      - redis_data:/data
+    networks:
+      git:
+        ipv4_address: 192.168.240.3
+    ports:
+      - "6379:6379"
+
+  git:
+    container_name: git
+    restart: always
+    build: .
+    volumes:
+      - .:/usr/git
+#    healthcheck:
+#      start_period: 60s
+    networks:
+      git:
+        ipv4_address: 192.168.240.2
+    command: bash -c "start/_cycle_celery_worker.sh &
+      sleep 360d"
+
+networks:
+  git:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.240.0/24
+
+
+
+#_cycle_celery_worker.sh
+#    image: registry.gitlab.antipsy.ru/infra/gmun_tests:__IMAGE_TAG__
+#    environment:
+#      REDIS_HOST: redis
+#      REDIS_PORT: 6379
+#      REDIS_PASSWORD: __REDIS_PASSWORD__
+#      VIRTUAL_HOST: __DOMAIN_NAME__
+#      LETSENCRYPT_HOST: __DOMAIN_NAME__
+#      LETSENCRYPT_EMAIL: devops@antipsy.ru
+#    networks:
+#      - gmun_tests
+#      - proxy
+
+#  celeryworker: &celery_template
+#    restart: always
+#    image: registry.gitlab.antipsy.ru/infra/gmun_tests:__IMAGE_TAG__
+#    command: "celery -A gmun_tests worker -l info"
+#    depends_on:
+#      redis:
+#        condition: service_healthy
+#    environment:
+#      REDIS_HOST: redis
+#      REDIS_PORT: 6379
+#      REDIS_PASSWORD: __REDIS_PASSWORD__
+#    networks:
+#      - gmun_tests
+#
+#  scheduler:
+#    <<: *celery_template
+#    command: "celery -A gmun_tests beat -l info"
+#
+#  redis:
+#    restart: always
+#    image: redis
+#    healthcheck:
+#      test: redis-cli PING
+#      interval: 10s
+#      timeout: 10s
+#      retries: 3
+#      start_period: 10s
+#    command: >
+#     --requirepass __REDIS_PASSWORD__
+#    volumes:
+#      - redis_data:/data
+#    ports: ["${REDIS_PORT:-6379}:6379"]
+#    networks:
+#      - gmun_tests
+#
+#networks:
+#  gmun_tests:
+#  proxy:
+#    external: true
+#
+#volumes:
+#
+#  redis_data:

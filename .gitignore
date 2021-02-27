@@ -1,0 +1,16 @@
+*ChromeProfile*/
+venv/
+__pycache__/
+*.jar
+*.png
+*.log
+*.txt
+screenshots/
+.idea/
+*.pyc
+old/
+selenium/
+*driver
+chromedriver_windows/chromedriver.exe
+settings_local.py
+/gmun_tests/`modules/

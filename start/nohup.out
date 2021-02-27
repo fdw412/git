@@ -1,0 +1,68 @@
+[I 201102 17:13:13 command:140] Visit me at http://localhost:5555
+[I 201102 17:13:13 command:145] Broker: redis://redis:**@d05.antipsy.ru:6379/0
+[I 201102 17:13:13 command:148] Registered tasks: 
+    ['celery.accumulate',
+     'celery.backend_cleanup',
+     'celery.chain',
+     'celery.chord',
+     'celery.chord_unlock',
+     'celery.chunks',
+     'celery.group',
+     'celery.map',
+     'celery.starmap']
+[I 201102 17:13:13 mixins:229] Connected to redis://redis:**@d05.antipsy.ru:6379/0
+[1;36mcelery multi v4.4.1 (cliffs)[0m
+> Starting nodes...
+	> sender_front@d27.antipsy.ru: [1;32mOK[0m
+	> worker@d27.antipsy.ru: [1;32mOK[0m
+[W 201102 17:13:15 control:49] 'stats' inspect method failed
+[W 201102 17:13:15 control:49] 'active_queues' inspect method failed
+[W 201102 17:13:15 control:49] 'registered' inspect method failed
+[W 201102 17:13:15 control:49] 'scheduled' inspect method failed
+[W 201102 17:13:15 control:49] 'active' inspect method failed
+[W 201102 17:13:15 control:49] 'reserved' inspect method failed
+[W 201102 17:13:15 control:49] 'revoked' inspect method failed
+[W 201102 17:13:15 control:49] 'conf' inspect method failed
+[1;36mcelery multi v4.4.1 (cliffs)[0m
+> Starting nodes...
+	> ale_msg_delayed@d27.antipsy.ru: [1;32mOK[0m
+	> worker@d27.antipsy.ru: [1;32mOK[0m
+ERROR: Pidfile (tmp/pid_amd.pid) already exists.
+Seems we're already running? (pid: 7482)
+[1;36mcelery multi v4.4.1 (cliffs)[0m
+> Starting nodes...
+	> keyword_subscription@d27.antipsy.ru: [1;32mOK[0m
+	> worker@d27.antipsy.ru: [1;32mOK[0m
+[1;36mcelery multi v4.4.1 (cliffs)[0m
+> Starting nodes...
+	> keyword_subscription_subsman@d27.antipsy.ru: [1;32mOK[0m
+	> worker@d27.antipsy.ru: [1;32mOK[0m
+[1;36mcelery multi v4.4.1 (cliffs)[0m
+> Starting nodes...
+	> triggers@d27.antipsy.ru: [1;32mOK[0m
+	> worker@d27.antipsy.ru: [1;32mOK[0m
+[1;36mcelery multi v4.4.1 (cliffs)[0m
+> Starting nodes...
+	> non_alert@d27.antipsy.ru: [1;32mOK[0m
+	> worker@d27.antipsy.ru: [1;32mOK[0m
+[W 201103 13:09:26 state:120] Substantial drift from ale_msg_delayed@d27.antipsy.ru may mean clocks are out of sync.  Current drift is
+    107 seconds.  [orig: 2020-11-03 13:09:04.562953 recv: 2020-11-03 13:07:17.647876]
+    
+[W 201103 13:09:26 state:120] Substantial drift from non_alert@d27.antipsy.ru may mean clocks are out of sync.  Current drift is
+    107 seconds.  [orig: 2020-11-03 13:09:04.886112 recv: 2020-11-03 13:07:17.548124]
+    
+[W 201103 13:09:26 state:120] Substantial drift from keyword_subscription@d27.antipsy.ru may mean clocks are out of sync.  Current drift is
+    123 seconds.  [orig: 2020-11-03 13:09:19.793318 recv: 2020-11-03 13:07:16.378603]
+    
+[W 201103 13:09:26 state:120] Substantial drift from triggers@d27.antipsy.ru may mean clocks are out of sync.  Current drift is
+    127 seconds.  [orig: 2020-11-03 13:09:25.937299 recv: 2020-11-03 13:07:18.688725]
+    
+[W 201103 13:09:27 state:120] Substantial drift from keyword_subscription_subsman@d27.antipsy.ru may mean clocks are out of sync.  Current drift is
+    131 seconds.  [orig: 2020-11-03 13:09:27.985681 recv: 2020-11-03 13:07:16.829019]
+    
+[W 201103 13:09:34 state:120] Substantial drift from sender_front@d27.antipsy.ru may mean clocks are out of sync.  Current drift is
+    138 seconds.  [orig: 2020-11-03 13:09:34.129297 recv: 2020-11-03 13:07:16.811550]
+    
+[W 201103 16:33:17 state:120] Substantial drift from worker_sf@61ab2730cb4a may mean clocks are out of sync.  Current drift is
+    17 seconds.  [orig: 2020-11-03 16:33:17.024685 recv: 2020-11-03 16:33:00.972687]
+    
